@@ -1,0 +1,7 @@
+/Debug
+
+*.bin
+*.o
+*.obj
+*.elf
+*.hex
