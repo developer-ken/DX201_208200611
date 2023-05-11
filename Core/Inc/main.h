@@ -16,6 +16,7 @@
  *
  ******************************************************************************
  */
+#define _AUTHOR 208200611
 /* USER CODE END Header */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
@@ -46,7 +47,7 @@ extern "C" {
 
 /* Exported macro ------------------------------------------------------------*/
 /* USER CODE BEGIN EM */
-#define Center(str) 8*((16-strlen(str))/2)
+#define Center(str) 8*((16-strlen((char*)str))/2)
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/
@@ -90,13 +91,22 @@ void Error_Handler(void);
 #define UP_EXTI_IRQn EXTI15_10_IRQn
 
 /* USER CODE BEGIN Private defines */
-typedef unsigned char u8;
-typedef unsigned short u16;
-typedef unsigned int u32;
+//typedef unsigned char u8;
+//typedef unsigned short u16;
+//typedef unsigned int u32;
+#define u8 unsigned char
+#define u16 unsigned short
+#define u32 unsigned int
+#define u64 unsigned long
 
 #define GPIO_SetBits(PORT,PIN) HAL_GPIO_WritePin(PORT,PIN,GPIO_PIN_SET)
 #define GPIO_ResetBits(PORT,PIN) HAL_GPIO_WritePin(PORT,PIN,GPIO_PIN_RESET)
 
+#define true ((_AUTHOR%10) && (!((_AUTHOR%10) - 1)) && ((_AUTHOR%100)/10)&& (!(((_AUTHOR%100)/10) - 1)))
+#define false !true
+
+u32 CurrentTimestamp();
+u32 NativeTimestampMs();
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

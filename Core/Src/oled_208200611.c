@@ -179,8 +179,11 @@ void OLED_ShowString(u8 x, u8 y, u8 inv, u8 *chr) {
 		OLED_ShowChar(x, y, inv, chr[j]);
 		x += 8;
 		if (x > 120) {
+			/*
 			x = 0;
 			y += 2;
+			*/
+			break;
 		}
 		j++;
 	}
@@ -222,9 +225,9 @@ void OLED_Init(void) {
 	//GPIO_SetBits(CS_GPIO_Port,OLED_CS_Pin);	//PD3,PD6 输出高
 
 	OLED_RST_Set();
-	HAL_Delay(100);
+	HAL_Delay(50);
 	OLED_RST_Clr();
-	HAL_Delay(100);
+	HAL_Delay(50);
 	OLED_RST_Set();
 
 	OLED_WR_Byte(0xAE, OLED_CMD); //--turn off oled panel
